@@ -1,17 +1,24 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import base64
 
 
 st.session_state.loginState = False
 
 def login():
+
+    # CSS injections
     set_png_as_page_bg("assets/backGround.png")
     color_container()
     color_button()
+
+    # Placing title
     _, col2, _ = st.columns([1, 3, 1])
     with col2:
         st.title(":red[Valentine's Login]", )
     left, mainCol, right = st.columns([2,3,2])
+    
+    # Login Field
     password = ""
     with st.container(border=True, key="container"):
         password = st.text_input(":red[Password]", type="password")
@@ -68,9 +75,14 @@ def color_button():
                 width: 100%; 
                 height: 3em;
                 font-weight: bold;
-                transition: 0.1s;
+                transition: 0.3s;
             }
         </style>
         """
     st.markdown(login_style, unsafe_allow_html=True)
-login()
+
+
+
+# Run command
+if __name__=="__main__":
+    login()
